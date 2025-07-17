@@ -1,0 +1,15 @@
+# apps/backend/Dockerfile.dev
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copier les fichiers package.json
+COPY package*.json ./
+RUN npm install
+
+# Copier le code source
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start:dev"]
